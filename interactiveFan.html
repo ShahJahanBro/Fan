@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Fan</title>
+    <style>
+   body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .fan-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+    }
+
+    .horizontal, .vertical {
+      position: absolute;
+      background-color: #007bff;
+      border-radius: 5px;
+    }
+    .horizontal {
+      width: 100%;
+      height: 20px;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+    }
+
+    .vertical {
+      width: 20px;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .fan-container.animate {
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div class="fan-container">
+        <div class="horizontal"></div>
+        <div class="vertical"></div>
+      </div>
+      <button onclick="startFan()">Start</button>
+      <button onclick="stopFan()">Stop</button>
+    
+      <script>
+        const fanContainer = document.querySelector('.fan-container');
+    
+        function startFan() {
+          fanContainer.classList.add('animate');
+        }
+    
+        function stopFan() {
+          fanContainer.classList.remove('animate');
+        }
+      </script>
+</body>
+</html>
